@@ -73,7 +73,7 @@
             var id = $(this).data('id');
             
             $.ajax({
-                url: 'web/cart/add',
+                url: 'cart/add',
                 data: {id: id},
                 type: 'GET',
                 success: function(res){

@@ -19,6 +19,8 @@ Thumbs.db
 # ignore template dir
 /template
 /dataBase
+/old
+/mag
 
 # ignore upload dir
 /web/upload
