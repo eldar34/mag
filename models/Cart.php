@@ -35,7 +35,7 @@ class Cart extends \yii\db\ActiveRecord
 	public function addToCart($product, $qty = 1){
 		$mainImg = $product->getImage();
 			$rightPath = explode('/', $mainImg->getUrl('x50'));
-            $rightPath[3] = 'yii2images';
+            $rightPath[1] = 'yii2images';
             $rightPath2 = implode('/', $rightPath); 
 		if(isset($_SESSION['cart'][$product->id])){
 			$_SESSION['cart'][$product->id]['qty'] += $qty;
