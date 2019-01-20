@@ -38,7 +38,7 @@ class CategoryController extends AppController{
                                  'forcePageParam' => FALSE,
                                  'pageSizeParam' => FALSE]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-        $this->layout = 'mainv'; 
+        //$this->layout = 'mainv'; 
         $this->setMeta('MaG Shop | ' . $category->name, $category->keywords, $category->description);       
         return $this->render('view', compact('products', 'pages', 'category'));
     }
@@ -55,7 +55,7 @@ class CategoryController extends AppController{
                                  'forcePageParam' => FALSE,
                                  'pageSizeParam' => FALSE]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-        $this->layout = 'mains';
+        //$this->layout = 'mains';
         return $this->render('search', compact('products', 'pages', 'q'));
     }
 }

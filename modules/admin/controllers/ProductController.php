@@ -36,6 +36,7 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
+
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -101,7 +102,17 @@ class ProductController extends Controller
     {
         $model = $this->findModel($id);
 
+        /*if ($model->load(Yii::$app->request->post()))
+        {
+            $model->validate();
+            var_dump(Yii::$app->request->post()['Product']['params']);
+            exit;
+        }*/
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            /*$model->params = Yii::$app->request->post()['Product']['params'];
+            $model->save();*/
 
             $model->image = UploadedFile::getInstance($model, 'image');
             if($model->image)
@@ -131,9 +142,11 @@ class ProductController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete()
     {
-        $this->findModel($id)->delete();
+        /*var_dump(Yii::$app->request->post('productId'));
+        exit;*/
+        $this->findModel(Yii::$app->request->post('productId'))->delete();
 
         return $this->redirect(['index']);
     }

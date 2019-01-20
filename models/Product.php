@@ -23,6 +23,8 @@ use yii\helpers\Url;
 class Product extends \yii\db\ActiveRecord
 {
 
+    //public $product_params;
+
     public function behaviors()
     {
         return [
@@ -49,6 +51,7 @@ class Product extends \yii\db\ActiveRecord
             [['category_id'], 'integer'],
             [['content', 'hit', 'new', 'sale'], 'string'],
             [['price'], 'number'],
+            [['product_params'], 'safe'],
             [['name', 'keywords', 'description', 'img'], 'string', 'max' => 255],
         ];
     }
@@ -70,6 +73,7 @@ class Product extends \yii\db\ActiveRecord
             'hit' => 'Hit',
             'new' => 'New',
             'sale' => 'Sale',
+            'product_params' => 'Color/Size',
         ];
     }
 
@@ -86,6 +90,36 @@ class Product extends \yii\db\ActiveRecord
        //return 'uploads/no-image.png';
         return ($this->img) ? Url::to('@web/template/images/products/') . $this->img : Url::to('@web/template/images/products/no-image.png');
     }*/
+
+    public function colorSize($includeParams)
+    {
+        $dirtyParams = explode(';', $includeParams);
+
+        foreach ($dirtyParams as $key => $value) {
+
+            //Get color
+            $color = stristr($value, '(', TRUE);
+
+            //Get size in ()
+            $text = $value;
+            preg_match('#\((.*?)\)#', $text, $match);
+            //$size = explode(',', $match[1]);
+
+            yii\helpers\ArrayHelper::setValue($resultArray, $match[1], $color);
+            //yii\helpers\ArrayHelper::setValue($resultArray, $key.'.size', $size);
+        }
+
+        
+
+        
+
+        //
+        //print $match[1];
+
+
+
+        return $resultArray;
+    }
 
     public function getCategory(){
         return $this->hasOne(Category::className(), ['id'=>'category_id']);

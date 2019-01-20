@@ -24,6 +24,7 @@ class Product extends \yii\db\ActiveRecord
 
     public $image;
     public $gallery;
+    //public $params;
 
     public function behaviors()
     {
@@ -53,6 +54,7 @@ class Product extends \yii\db\ActiveRecord
             [['category_id', 'name', 'content', 'keywords', 'description'], 'required'],
             [['category_id'], 'integer'],
             [['content', 'hit', 'new', 'sale'], 'string'],
+            [['product_params'], 'safe'],
             [['price'], 'number'],
             [['name', 'keywords', 'description', 'img'], 'string', 'max' => 255],
             [['image'], 'file', 'extensions' => 'png, jpg'],
@@ -78,6 +80,7 @@ class Product extends \yii\db\ActiveRecord
             'hit' => 'Хит',
             'new' => 'Новинка',
             'sale' => 'Распродажа',
+            'product_params' => 'Color/Size',
         ];
     }
 

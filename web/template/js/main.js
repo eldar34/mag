@@ -13,7 +13,7 @@
 
 	function getCart(){
 		$.ajax({
-                url: 'web/cart/show',
+                url: 'cart/show',
                 type: 'GET',
                 success: function(res){
                     if(!res) alert('Ошибка!');
@@ -35,7 +35,7 @@
 	$('#cart .modal-body').on('click', '.del-item', function(){
 		var id = $(this).data('id');
 		 $.ajax({
-                url: 'web/cart/del-item',
+                url: 'cart/del-item',
                 data: {id: id},
                 type: 'GET',
                 success: function(res){
@@ -53,7 +53,7 @@
 	function clearCart(){
 
 		 $.ajax({
-                url: 'web/cart/clear',
+                url: 'cart/clear',
                 type: 'GET',
                 success: function(res){
                     if(!res) alert('Ошибка!');
@@ -71,6 +71,7 @@
             e.preventDefault();
             
             var id = $(this).data('id');
+            console.log(id);
             
             $.ajax({
                 url: 'cart/add',

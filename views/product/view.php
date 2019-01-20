@@ -45,7 +45,7 @@ use yii\helpers\Html;
 					$mainImg = $product->getImage();
 					$gallery = $product->getImages();
 						 $rightPath = explode('/', $mainImg->getUrl('268x249'));
-				         $rightPath[3] = 'yii2images';
+				         $rightPath[1] = 'yii2images';
 				         $rightPath2 = implode('/', $rightPath);
 					
 				?>
@@ -70,7 +70,7 @@ use yii\helpers\Html;
 											<div class="item <?php if($i == 0) echo ' active'; ?>">
 										<?php endif; 
 											 $gallaryPath = explode('/', $img->getUrl('84x85'));
-									         $gallaryPath[3] = 'yii2images';
+									         $gallaryPath[1] = 'yii2images';
 									         $gallaryPath2 = implode('/', $gallaryPath);
 										?>
 						<a href=""><?= Html::img($gallaryPath2); ?></a>
@@ -332,7 +332,7 @@ use yii\helpers\Html;
                                                                  endif;
                                                                  	$mainImg = $hit->getImage();
 									                                $rightPath = explode('/', $mainImg->getUrl());
-									                                $rightPath[3] = 'yii2images';
+									                                $rightPath[1] = 'yii2images';
 									                                $rightPath2 = implode('/', $rightPath); 
                                                                  ?>
 									<div class="col-sm-4">

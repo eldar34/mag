@@ -61,6 +61,8 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <?= $form->field($model, 'sale')->checkbox([ 0 => '0', 1 => '1', '' => '', ]) ?>
 
+    <?= $form->field($model, 'product_params')->textarea() ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

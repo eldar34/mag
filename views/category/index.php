@@ -184,8 +184,49 @@ foreach ($model as $item) {
                                 </div>
                                 <div class="choose">
                                     <ul class="nav nav-pills nav-justified">
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                        
+                                        <li>
+                                            <?php
+
+                                                $dirtyParams = $item->colorSize($item->product_params);
+                                                //$colorSize = yii\helpers\ArrayHelper::map($dirtyParams, 'color', 'size');
+
+                                                //dx($dirtyParams);
+                                                
+
+                                                echo Html::dropDownList(
+                                                    "Color",
+                                                    "",
+                                                    $dirtyParams,
+                                                    [
+                                                        'prompt' => 'Select Color',
+                                                        'onchange'=>
+              '$.post("'.Yii::$app->urlManager->createUrl(["product/sizepi"]).'", function( data ) {
+      $("#test_div").html( data );
+     })'
+                                                    ]);
+                                                /*
+                                                    ArrayHelper::map(
+                                                        $array,'value','value'
+                                                        $( "select#size" ).html( data );
+                                                    )
+                                                */
+                                            ?>
+                                                
+                                        </li>
+
+                                        <li>
+                                            <?php
+                                                echo Html::dropDownList(
+                                                    "size",
+                                                    "",
+                                                    ['0' => 50, '1' => 70],
+                                                    [
+                                                        'prompt' => 'Select Size',
+                                                        
+                                                    ]);
+                                            ?>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

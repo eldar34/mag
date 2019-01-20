@@ -22,4 +22,20 @@ class ProductController extends AppController {
         $this->setMeta('MaG Shop | ' . $product->name, $product->keywords, $product->description);
         return $this->render('view', compact('product', 'hits'));
     }
+
+    public function actionSizepi()
+    {      
+
+        echo '555';         
+        
+                
+        /*if (!empty($posts)) {
+            foreach($posts as $post) {
+                echo "<option value='".$post->id."'>".$post->title."</option>";
+            }
+        } else {
+            echo "<option>-</option>";
+        }*/
+        
+    }
 }
