@@ -93,7 +93,9 @@ foreach ($model as $item) {
             </div>
         </div>
     </section><!--/slider-->
-    
+<!-- Look at this-->
+<?= Html::csrfMetaTags() ?>
+<!-- Look at this-->
     <section>
         <div class="container">
             <div class="row">
@@ -192,7 +194,7 @@ foreach ($model as $item) {
                                                 //$colorSize = yii\helpers\ArrayHelper::map($dirtyParams, 'color', 'size');
 
                                                 //dx($dirtyParams);
-                                                
+                                                //$dirtyParams = ['0' => 50, '1' => 70];
 
                                                 echo Html::dropDownList(
                                                     "Color",
@@ -200,10 +202,23 @@ foreach ($model as $item) {
                                                     $dirtyParams,
                                                     [
                                                         'prompt' => 'Select Color',
+                                                        'id' => 'c'.$item->id,
                                                         'onchange'=>
-              '$.post("'.Yii::$app->urlManager->createUrl(["product/sizepi"]).'", function( data ) {
-      $("#test_div").html( data );
-     })'
+                                                            '
+                                                           
+                                                           var elementId = this.id;
+                                                           var sortId = elementId.substring(1);
+                                                           var sizeId = "s" + sortId;
+                                                           
+                     $.post("'.Yii::$app->urlManager->createUrl(["/product/sizepi"]).'",{id: $(this).val()}, function( data ) {
+                     
+                     
+                     $("select[id=" + sizeId + "]").html( data );
+
+                     
+                     
+                     })
+                                                    '
                                                     ]);
                                                 /*
                                                     ArrayHelper::map(
@@ -218,11 +233,12 @@ foreach ($model as $item) {
                                         <li>
                                             <?php
                                                 echo Html::dropDownList(
-                                                    "size",
+                                                    "c".$item->id,
                                                     "",
                                                     ['0' => 50, '1' => 70],
                                                     [
                                                         'prompt' => 'Select Size',
+                                                        'id' => 's'.$item->id
                                                         
                                                     ]);
                                             ?>

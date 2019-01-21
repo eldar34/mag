@@ -24,9 +24,33 @@ class ProductController extends AppController {
     }
 
     public function actionSizepi()
-    {      
+    {
 
-        echo '555';         
+        $data = "ttt";
+        if(Yii::$app->request->isAjax){
+            $dirtySizes = Yii::$app->request->post('id');
+            $sizes = explode(',', $dirtySizes);
+
+            //$data = $id;
+            $myProducts = "<option value='0'>" . "Select size" . "</option>";;
+            //$this->option = "<option value='0'>" . AirlinesModule::t('module', 'AIRLINES_PROMPT_FORM') . "</option>";
+
+            /*$products = \app\models\Product::find()
+
+                ->Where('referenceId=:id',[':id' => $id])
+                ->orderBy('referenceId')
+                ->all();*/
+            foreach ($sizes as $size){
+                $myProducts .= '<option value="' . $size . '">' . $size . '</option>';
+            }
+
+
+
+            $data = $myProducts;
+
+        }
+        //return $this->option;
+        return $data;
         
                 
         /*if (!empty($posts)) {
