@@ -32,7 +32,7 @@ class ProductController extends AppController {
             $sizes = explode(',', $dirtySizes);
 
             //$data = $id;
-            $myProducts = "<option value='0'>" . "Select size" . "</option>";;
+            $myProducts = "<option value='0'>" . "Select Size" . "</option>";;
             //$this->option = "<option value='0'>" . AirlinesModule::t('module', 'AIRLINES_PROMPT_FORM') . "</option>";
 
             /*$products = \app\models\Product::find()

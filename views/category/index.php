@@ -164,7 +164,8 @@ foreach ($model as $item) {
                                                 <?= $item->name ?>
                                             </a></p>
                          <a href="<?= Url::to(['cart/add', 'id'=>$item->id]) ?>"
-                         data-id="<?= $item->id ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                         data-id="<?= $item->id ?>" class="btn btn-default add-to-cart" style="display: none">
+                         <i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
 <!-- 
                                         <div class="product-overlay">
@@ -209,15 +210,27 @@ foreach ($model as $item) {
                                                            var elementId = this.id;
                                                            var sortId = elementId.substring(1);
                                                            var sizeId = "s" + sortId;
-                                                           
-                     $.post("'.Yii::$app->urlManager->createUrl(["/product/sizepi"]).'",{id: $(this).val()}, function( data ) {
-                     
-                     
-                     $("select[id=" + sizeId + "]").html( data );
 
+                                                           var elemValue = this.value;
+
+                                                           
+
+  if(elemValue.length > 0)
+  {
+   $.post("'.Yii::$app->urlManager->createUrl(["/product/sizepi"]).'",
+   {id: $(this).val()}, 
+   function( data ) {                     
                      
+                         $("select[id=" + sizeId + "]").html( data );
+                         $("select[id=" + sizeId + "]").prop("disabled", false);                     
                      
                      })
+  }else{
+     $("select[id=" + sizeId + "]").prop("disabled", true);
+      $("a[data-id=" + sortId + "]").css("display", "none");
+  }
+                                                           
+                     
                                                     '
                                                     ]);
                                                 /*
@@ -238,7 +251,25 @@ foreach ($model as $item) {
                                                     ['0' => 50, '1' => 70],
                                                     [
                                                         'prompt' => 'Select Size',
-                                                        'id' => 's'.$item->id
+                                                        'id' => 's'.$item->id,
+                                                        'disabled' => true,
+                                                        'onchange'=>
+                                                            '
+                                                               var elementId = this.id;
+                                                               var sortId = elementId.substring(1);
+
+                                                               var elemValue = this.value;
+                        
+
+                                           if(elemValue != 0)
+                                            {
+                                              $("a[data-id=" + sortId + "]").css("display", "block");
+                                            }else{
+                                              $("a[data-id=" + sortId + "]").css("display", "none");  
+                                            }
+
+                                          
+                                                            '
 
                                                         
                                                     ]);
