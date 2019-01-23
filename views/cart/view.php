@@ -28,6 +28,8 @@ use yii\widgets\Pjax;
               <tr>
                   <td>Фото</td>
                   <td>Наименование</td>
+                  <td>Цвет</td>
+                  <td>Размер</td>
                   <td>Количество</td>
                   <td>Цена</td>
                   <td>Сумма</td>
@@ -42,6 +44,8 @@ use yii\widgets\Pjax;
               'height' => 50,
               ]) ?></td>
                   <td><a href="<?= Url::to(['product/view', 'id' => $id]) ?>"><?= $item['name'] ?></a></td>
+                  <td><?= $item['color'] ?></td>
+                  <td><?= $item['size'] ?></td>
                   <td><?= $item['qty'] ?></td>
                   <td><?= $item['price'] ?></td>
                   <td><?= $item['qty'] * $item['price']?></td>

@@ -25,13 +25,16 @@ class CartController extends AppController
 			$qty = (int)Yii::$app->request->get('qty');
         	$qty = !$qty ? 1: $qty;
 			//var_dump($qty);
+			$color = Yii::$app->request->get('color');
+			$size = Yii::$app->request->get('size');
+
 			$product = Product::findOne($id);
 			if(empty($product)) return false;
 			//var_dump($product);
 			$session = Yii::$app->session;
 			$session->open();
 			$cart = new Cart();
-			$cart->addToCart($product, $qty);
+			$cart->addToCart($product, $qty, $color, $size);
 		}
 		else{
 
@@ -143,6 +146,8 @@ class CartController extends AppController
                 $order_items->order_id = $order_id;
                 $order_items->product_id = $id;
                 $order_items->name = $item['name'];
+                $order_items->color = $item['color'];
+                $order_items->size = $item['size'];
                 $order_items->price = $item['price'];
                 $order_items->qty_item = $item['qty'];
                 $order_items->sum_item = $item['qty'] * $item['price'];

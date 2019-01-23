@@ -71,11 +71,19 @@
             e.preventDefault();
             
             var id = $(this).data('id');
-            console.log(id);
+
+            var IdForColor = "c" + id;
+            var color = $("#" + IdForColor + " option:selected").text();
+
+            var IdForSize = "s" + id;
+            var size = $("#" + IdForSize + " option:selected").text();
+
+            console.log(color);
+            console.log(size);
             
             $.ajax({
                 url: 'cart/add',
-                data: {id: id},
+                data: {id: id, color: color, size: size},
                 type: 'GET',
                 success: function(res){
                     if(!res) alert('Ошибка!');

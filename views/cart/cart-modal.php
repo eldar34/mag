@@ -8,6 +8,8 @@ use yii\helpers\Html;
 				<tr>
 					<th>Фото</th>
 					<th>Наименование</th>
+					<th>Цвет</th>
+					<th>Размер</th>
 					<th>Кол-во</th>
 					<th>Цена</th>
 					<th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
@@ -22,6 +24,8 @@ use yii\helpers\Html;
 							]) ?>
 						</td>
 						<td><?= $item['name'] ?></td>
+						<td><?= $item['color'] ?></td>
+						<td><?= $item['size'] ?></td>
 						<td><?= $item['qty'] ?></td>
 						<td><?= $item['price'] ?></td>
 						<td>
@@ -30,11 +34,11 @@ use yii\helpers\Html;
 					</tr>
 				<?php endforeach ?>
 				<tr>
-					<td colspan="4">Итого: </td>
+					<td colspan="6">Итого: </td>
 					<td><?= $session['cart.qty'] ?></td>
 				</tr>
 				<tr>
-					<td colspan="4">На сумму: </td>
+					<td colspan="6">На сумму: </td>
 					<td><?= $session['cart.sum'] ?></td>
 				</tr>
 			</tbody>

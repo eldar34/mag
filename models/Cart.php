@@ -32,7 +32,7 @@ class Cart extends \yii\db\ActiveRecord
         ];
     }
 
-	public function addToCart($product, $qty = 1){
+	public function addToCart($product, $qty = 1, $color, $size){
 		$mainImg = $product->getImage();
 			$rightPath = explode('/', $mainImg->getUrl('x50'));
 			//fix position
@@ -45,7 +45,9 @@ class Cart extends \yii\db\ActiveRecord
 				'qty' => $qty,
 				'name' => $product->name,
 				'price' => $product->price,
-				'img' => $rightPath2
+				'img' => $rightPath2,
+				'color' => $color,
+				'size' => $size
 
 			];
 		}

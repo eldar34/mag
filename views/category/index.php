@@ -239,6 +239,7 @@ foreach ($model as $item) {
                                                     [
                                                         'prompt' => 'Select Size',
                                                         'id' => 's'.$item->id
+
                                                         
                                                     ]);
                                             ?>

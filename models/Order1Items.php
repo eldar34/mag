@@ -19,7 +19,7 @@ class Order1Items extends ActiveRecord {
             [['order_id', 'product_id', 'name', 'price', 'qty_item', 'sum_item'], 'required'],
             [['order_id', 'product_id', 'qty_item'], 'integer'],
             [['price', 'sum_item'], 'number'],
-            [['name'], 'string', 'max' => 255],
+            [['name', 'color', 'size'], 'string', 'max' => 255],
         ];
     }
 }
