@@ -163,9 +163,14 @@ foreach ($model as $item) {
                                             <p><a href="<?= Url::to(['product/view', 'id' => $item->id]) ?>">
                                                 <?= $item->name ?>
                                             </a></p>
-                         <a href="<?= Url::to(['cart/add', 'id'=>$item->id]) ?>"
-                         data-id="<?= $item->id ?>" class="btn btn-default add-to-cart" style="display: none">
-                         <i class="fa fa-shopping-cart"></i>Add to cart</a>
+                         <?= Html::a('<i class="fa fa-shopping-cart"></i>Add to cart', ['cart/add', 'id'=>$item->id],
+                             [
+                                    'class' => 'btn btn-default add-to-cart',
+                                    'data-id' => $item->id,
+                                    //'disabled' => true,
+                                    //'style' => 'display: none'
+                             ]) ?>
+
                                         </div>
 <!-- 
                                         <div class="product-overlay">
@@ -227,7 +232,7 @@ foreach ($model as $item) {
                      })
   }else{
      $("select[id=" + sizeId + "]").prop("disabled", true);
-      $("a[data-id=" + sortId + "]").css("display", "none");
+     
   }
                                                            
                      
@@ -261,12 +266,7 @@ foreach ($model as $item) {
                                                                var elemValue = this.value;
                         
 
-                                           if(elemValue != 0)
-                                            {
-                                              $("a[data-id=" + sortId + "]").css("display", "block");
-                                            }else{
-                                              $("a[data-id=" + sortId + "]").css("display", "none");  
-                                            }
+                                           
 
                                           
                                                             '

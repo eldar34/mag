@@ -78,22 +78,29 @@
             var IdForSize = "s" + id;
             var size = $("#" + IdForSize + " option:selected").text();
 
-            console.log(color);
-            console.log(size);
+            //console.log(color);
+            //console.log(size);
+
+            if(color != "Select Color" && size != "Select Size")
+            {
+                $.ajax({
+                    url: 'cart/add',
+                    data: {id: id, color: color, size: size},
+                    type: 'GET',
+                    success: function(res){
+                        if(!res) alert('Ошибка!');
+                        //console.log(res);
+                        showCart(res);
+                    },
+                    error: function(){
+                        alert('ERROR');
+                    }
+                });
+            }else{
+                console.log('Hello');
+            }
             
-            $.ajax({
-                url: 'cart/add',
-                data: {id: id, color: color, size: size},
-                type: 'GET',
-                success: function(res){
-                    if(!res) alert('Ошибка!');
-                    //console.log(res);
-                    showCart(res);
-                },
-                error: function(){
-                   alert('ERROR');   
-                }
-            });
+
             
         });
 
