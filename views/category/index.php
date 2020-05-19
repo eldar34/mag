@@ -148,7 +148,7 @@ foreach ($model as $item) {
                         <?php
                             $mainImg = $item->getImage();
                                 $rightPath = explode('/', $mainImg->getUrl('268x249'));
-                                $rightPath[2] = 'yii2images';
+                                $rightPath[3] = 'yii2images';
                                 $rightPath2 = implode('/', $rightPath);                
                         ?>
 
