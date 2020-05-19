@@ -23,7 +23,9 @@ Thumbs.db
 /mag
 
 # ignore upload dir
-/web/upload
+/web/upload/*
+!/web/upload/store/
+/web/upload/store/*
 
 # composer itself is not needed
 composer.phar
